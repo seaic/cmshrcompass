@@ -1,0 +1,222 @@
+body {
+    font:14px/1.4 Verdana,Arial; 
+    background:#eee; 
+    height:100%; 
+    padding:0; 
+    background-color: white;
+}
+
+h3 {
+    font:24px Verdana,Arial; 
+    margin:0
+}
+
+th{
+    font:14px Verdana,Arial; 
+    margin:0; color:#fff; 
+    background-color: #343a40; 
+}
+
+.thead-dark-self{
+    color: #202529;
+}
+
+.formtask{
+    float:left; 
+    margin-top: 40px;
+}
+#stat1{
+    float: left;
+    width: 50%;
+}
+#stat2{
+    width: 50%;
+    margin-left: 60%;
+}
+p label{
+    width: 150px; 
+    margin-bottom: 15px;
+}
+#id_members, #id_consultants{
+    min-width: 130px;
+    vertical-align: middle;
+}
+nav{
+    background-color: blue;
+}
+.submit{
+    margin-left: 15px;
+}
+.addclient{
+    margin-top: 174px; 
+    margin-left: 20px;
+}
+.stabuttond{
+    color: #fff; 
+    background-color: #007afb; 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 2px; 
+    padding: 5px;
+    margin-bottom: 10px;
+    float: left;
+    margin-right: 8px;
+}
+.stabuttond:hover{
+    color: white; 
+    background-color: #0065fb;
+}
+.stabutton{
+    color: #fff; 
+    background-color: #007afb; 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 2px; 
+    padding: 5px;
+}
+.stabutton:hover{
+    color: white; 
+    background-color: #0065fb;
+}
+.link{
+    color: #fff; 
+    text-decoration: none;
+}
+.link:hover{
+    color: #fff; 
+    text-decoration: none;
+}
+.link:link{
+    color: #fff; 
+    text-decoration: none;
+}
+.link:visited{
+    color: #fff; 
+    text-decoration: none;
+}
+.linkreload{
+    color: #0065fb; 
+    font-size: 30px; 
+    font-weight: bold;
+    width: 30px; 
+    height: 25px; 
+    margin: 0px; 
+    display: flex;
+    align-items: center;
+}
+.linkreload:hover{
+    text-decoration: none;
+}
+.linkreload:link{
+    text-decoration: none;
+}
+.linkreload:visited{
+    text-decoration: none;
+}
+.actionlink{
+    color: white; 
+    text-decoration: none;
+    padding: 4px;
+    background-color: #007afb;
+    border-radius: 2px;
+    }
+.actionlink:hover{
+    color: white; 
+    background-color: #0065fb; 
+    text-decoration: none;
+}
+.actionlink:active{
+    color: white; 
+    text-decoration: none;
+}
+.actionlink:visited{
+    color: white; 
+    text-decoration: none;
+}
+.actionlink:link{
+    color: white; 
+    text-decoration: none;
+}
+.buttongroup{
+    padding-top: 50px; 
+    margin-right: 80%; 
+    min-width: 260px;
+}
+tr:nth-child(odd) {
+    background-color: #f2f2f2;
+}
+#clientList{
+    padding: 3px;
+}
+#selectbar{
+    margin-top: 10px; margin-bottom: 10px;
+}
+.actionbtn{
+    color: #fff; 
+    background-color: #007afb; 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 2px; 
+    padding: 5px; 
+    text-decoration: none;
+}
+table{
+    border-collapse: collapse;
+}
+table, th, td{
+    border: 0.1px solid #CFCFCF;
+}
+
+.container{
+    min-width: 70%;
+}
+
+h2 {
+    font-size:12px; 
+    font-weight:normal; 
+    font-style:italic; 
+    margin:0 0 20px;
+}
+p {
+    margin-top:0;
+}
+ul {
+    margin:0; padding-left:20px;
+}
+
+.button {
+    font:14px Georgia,Verdana; 
+    margin-bottom:10px; 
+    padding:8px 10px 9px; 
+    border:1px solid #ccc; 
+    background:#eee; 
+    cursor:pointer
+}
+.button:hover {
+    border:1px solid #bbb; 
+    background:#e3e3e3
+}
+.error{
+    color: red;
+}
+#selectbarstat1{
+    margin-bottom: 20px;
+}
+#selectbarstat2{
+    margin-top: 30px;
+    margin-bottom: -10px;
+    position: relative;
+    z-index: 101;
+}
+.stabuttonfilter1{
+    color: #fff; 
+    background-color: #1b3960; 
+    cursor: pointer; 
+    border: 0; 
+    border-radius: 2px; 
+    padding: 5px;
+}
+.stabuttonfilter1:hover{
+    color: white; 
+    background-color: #2b5080;
+}

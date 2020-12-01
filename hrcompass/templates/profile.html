@@ -1,0 +1,48 @@
+{% extends "two_factor/_base.html" %}
+{% load i18n two_factor %}
+
+{% block content %}
+  <h1>{% block title %}{% trans "Account Security" %}{% endblock %}</h1>
+<br>
+  {% if default_device %}
+    <h3>{% trans "Disable Two-Factor Authentication" %}</h3>
+    <p style="padding-top: 10px; padding-bottom: 5px;">{% blocktrans trimmed %}However we strongly discourage you to do so, you can
+      also disable two-factor authentication for your account.{% endblocktrans %}</p>
+    <p><a class="btn btn-default" href="{% url 'two_factor:disable' %}">
+      {% trans "Disable Two-Factor Authentication" %}</a></p>
+  {% else %}
+    <p>{% blocktrans trimmed %}Two-factor authentication is not enabled for your
+      account. Enable two-factor authentication for enhanced account
+      security.{% endblocktrans %}</p>
+    <p><a href="{% url 'two_factor:setup' %}" class="btn btn-primary">
+      {% trans "Enable Two-Factor Authentication" %}</a>
+    </p>
+  {% endif %}
+  
+<form method="POST" class="post-form" action="/changepassword/{{ user.id }}">
+  {% csrf_token %}
+      <br>
+      <h3 class="title">Change Password / Username</h3>
+      <p style="padding-top: 10px; padding-bottom: 5px;">Password complexity: min. 8 characters, uppercase letter and number </p>
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">New Password</label>
+        <div class="col-sm-4">
+          {{ form.password }}
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Verify Password</label>
+        <div class="col-sm-4">
+          <input type="password" name="verifypassword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">New Email</label>
+        <div class="col-sm-4">
+          {{ form.email }}
+        </div>
+      </div>
+    <button class="stabutton" style="margin-top: 10px;" type="submit">Change</button>
+</form>
+{% endblock %}

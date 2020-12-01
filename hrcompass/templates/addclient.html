@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "_base.html" %}
+{% load i18n %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/addclient">
+        {% csrf_token %}
+<div class="container">      
+<div class="container" style="min-width:100%;">
+<br>
+    <h3 class="title">Add Client</h3>
+  <div class="formtask">
+    {{ form.as_p }}
+  </div>
+    </div>
+    <button class="stabutton submit" style="margin-top: 10px;" type="submit">Create</button>
+    <button class="stabutton submit" style="margin-top: 10px;" type="submit" name="stanother" value="startanother">Create and Start Another</button>
+    </div>
+  </form>
+</body>
+</html>
+{% endblock %}

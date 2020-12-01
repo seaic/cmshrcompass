@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+{% extends "_base.html" %}
+{% load i18n %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Index</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/addtask" id="personForm" data-taskname-url="{% url 'ajax_load_taskname' %}">
+        {% csrf_token %}
+  <div class="container">
+  <div class="container" style="min-width:100%;">
+<br>
+    <h3 class="title">Add Task</h3>
+  <div class="formtask">
+    {% csrf_token %}
+    {{ form.as_p }}
+  </div>
+  <button class="stabutton addclient"> <a class="link" href="/addclient" target="_blank">Add New Client</a></button>
+  </div>
+    <button class="stabutton submit" style="margin-top: 10px;" type="submit">Create</button>
+    <button class="stabutton submit" style="margin-top: 10px;" type="submit" name="stanother" value="startanother">Create and Start Another</button>
+  </div>
+  </form>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script>
+      $("#id_kind").change(function () {
+          const url = "/ajax/load-taskname/";  // get the url of the `load_taskname` view
+          const task_kind = $(this).val();  // get the selected kind ID from the HTML input
+          $.ajax({                       // initialize an AJAX request
+              url: url,                    // set the url of the request (= /ajax/load-taskname/ )
+              data: {
+                  'task_kind': task_kind      // add the kind id to the GET parameters
+              },
+              success: function (data) {   // `data` is the return of the `load_taskname` view function
+                  $("#id_task_name").html(data);  // replace the contents of the taskname input with the data that came from the server
+                  /*
+                  let html_data = '<option value="">---------</option>';
+                  data.forEach(function (task_name) {
+                      html_data += `<option value="${task_name.id}">${task_name.name}</option>`
+                  });
+                  console.log(html_data);
+                  $("#id_task_name").html(html_data);
+
+                  */
+              }
+          });
+
+      });
+  </script>
+</body>
+</html>
+{% endblock %}

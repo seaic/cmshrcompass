@@ -1,0 +1,80 @@
+{% extends "_base.html" %}
+{% load i18n %}
+
+{% block nav_secret %}active{% endblock %}
+
+{% block content %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Client Records</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/css/style.css' %}" />
+</head>
+<body>
+  <div class="container" style="width: 100%; margin: 0; padding: 0;">
+    <h1 style="margin-top: 10px;">{% block title %}{% trans "Dashboard" %}{% endblock %}</h1>
+    <form method="GET" action="dashboard">
+      <div id="stat1">
+        <div id="selectbarstat1">
+          <h3 style="margin-bottom: 25px;">Progress Bar</h3>
+              <label id="lblclient">Client
+                  <select id="clientList" name="clientList">
+                      <option selected value=0>All</option>
+                      {% for custom in client %}
+                      <option value="{{ custom.id }}" {% if result == custom.id %} selected {% endif %}>
+                          {{ custom.client_name }}</option>
+                      {% endfor %}
+                  </select>
+              </label>
+              <label id="lblclient">Kind
+                <select id="clientList" name="kindList">
+                    <option selected value=0>All</option>
+                    {% for kind in kinds %}
+                    {% if kind.active %}
+                    <option value="{{ kind.id }}" {% if taskresult == kind.id %} selected {% endif %}>{{ kind.kind }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <img src="data:image/png;base64,{{ data }}" alt="Progress Bar" height="200" width="400">
+      </div>
+      <div id="stat2">
+        <div id="selectbarstat2">
+          <h3 style="margin-bottom: 25px;">Status Bar</h3>
+              <label id="lblclient">Client
+                  <select id="clientList" name="clientList2">
+                      <option selected value=0>All</option>
+                      {% for custom in client %}
+                      <option value="{{ custom.id }}" {% if result2 == custom.id %} selected {% endif %}>
+                          {{ custom.client_name }}</option>
+                      {% endfor %}
+                  </select>
+              </label>
+              <label id="lblclient">Kind
+                <select id="clientList" name="kindList2">
+                    <option selected value=0>All</option>
+                    {% for kind in kinds %}
+                    {% if kind.active %}
+                    <option value="{{ kind.id }}" {% if taskresult2 == kind.id %} selected {% endif %}>{{ kind.kind }}
+                    </option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <img src="data:image/png;base64,{{ data2 }}" alt="Status Icon" height="200" width="200">
+        <p style="margin-left: 72px;">CLOSED</p>
+      </div>
+      <div class="buttongroup">
+        <button class="stabuttond" type="submit" value="click">Use Filters</button>
+        <button class="stabuttond"> <a class="link" href="/exceldownload">Download Data</a></button>
+        <a class="linkreload" href="/dashboard">&#8635;</a>
+      </div>  
+    </form>
+  </div>
+</body>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html {% if LANGUAGE_BIDI %}dir="rtl"{% endif %} lang="en">
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+  {% block content_wrapper %}
+    <nav style="background-color: #e0e0e1; border-color: #e0e0e1; border-radius: 0;" id="navbarcolor" class="navbar navbar-default" role="navigation">
+      <div style="width: 100%;" class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+
+        <div class="navbar-header">
+          <img style="padding: 0; margin-right: 20px;" class="navbar-brand" src="{% static 'image/logo.png' %}" alt="Logo Example Company" width="133" height="50">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">{% trans "Toggle navigation" %}</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a style="color: #707175; font-weight: bold;" class="navbar-brand" href="{% url 'show' %}">{% trans "HRCompass" %}</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li style="color: #0eb04a; font-weight: bold;" class="{% block nav_home %}{% endblock %}">
+                <a style="color: #0eb04a; font-weight: bold;" href="{% url 'show' %}">{% trans "Show" %}</a></li>
+            <li class="{% block nav_secret %}{% endblock %}">
+                <a style="color: #0eb04a; background-color: #e0e0e1; font-weight: bold;" href="{% url 'dashboard' %}">{% trans "Dashboard" %}</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% if user.is_authenticated %}
+              <li><a style="color: #2d9fd8; font-weight: bold;">{{ user }}
+                {% if user.otp_device %}<span class="glyphicon glyphicon-lock"></span>{% endif %}
+              </a></li>
+              <li class="{% block nav_profile %}{% endblock %}">
+                  <a style="color: #2d9fd8; background-color: #e0e0e1; font-weight: bold;" href="{% url 'profile' %}">{% trans "Account Security" %}</a></li>
+              <li><a style="color: #2d9fd8; font-weight: bold;" href="{% url 'logout' %}">{% trans "Logout" %}</a></li>
+            {% else %}
+              <li><a>{% trans "Not logged in" %}</a></li>
+              <li><a style="color: #2d9fd8; font-weight: bold;" href="{% url 'two_factor:login' %}">{% trans "Login" %}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      {% include "_messages.html" %}
+      {% block content %}{% endblock %}
+    </div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.2/js/bootstrap.min.js"></script>
+  {% endblock %}
+</body>
+</html>
